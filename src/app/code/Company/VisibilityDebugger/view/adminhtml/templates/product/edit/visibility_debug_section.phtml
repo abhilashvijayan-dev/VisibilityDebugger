@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © Company. All rights reserved.
+ * @var \Company\VisibilityDebugger\Block\Adminhtml\Product\Edit\VisibilityDebugSection $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<section class="admin__page-section company-visibility-debug-section" id="company-visibility-debug-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $escaper->escapeHtml(__('Why isn\'t this product visible?')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="messages"></div>
+        <p>
+            <label for="visibility-debug-store"><?= $escaper->escapeHtml(__('Store View:')) ?></label>
+            <select id="visibility-debug-store" class="admin__control-select">
+                <?php foreach ($block->getStoreList() ?? [] as $store): ?>
+                    <option value="<?= (int) $store['value'] ?>" <?= (int) $store['value'] === $block->getStoreId() ? ' selected' : '' ?>>
+                        <?= $escaper->escapeHtml($store['label']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="button" id="visibility-debug-run" class="action-secondary">
+                <?= $escaper->escapeHtml(__('Run Debug')) ?>
+            </button>
+        </p>
+        <div id="visibility-debug-results" class="admin__data-grid-outer-wrap" style="display:none;">
+            <table class="data-grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-th"><?= $escaper->escapeHtml(__('Status')) ?></th>
+                        <th class="data-grid-th"><?= $escaper->escapeHtml(__('Check')) ?></th>
+                        <th class="data-grid-th"><?= $escaper->escapeHtml(__('Message')) ?></th>
+                        <th class="data-grid-th"><?= $escaper->escapeHtml(__('Suggestion')) ?></th>
+                    </tr>
+                </thead>
+                <tbody id="visibility-debug-tbody"></tbody>
+            </table>
+        </div>
+        <div id="visibility-debug-commands" class="admin__page-section" style="display:none; margin-top:1rem;">
+            <div class="admin__page-section-title">
+                <span class="title"><?= $escaper->escapeHtml(__('Recommended commands')) ?></span>
+            </div>
+            <pre id="visibility-debug-commands-text" class="visibility-debug-commands-pre"></pre>
+        </div>
+    </div>
+</section>
+<script>
+    require([
+        'Company_VisibilityDebugger/js/visibility-debug'
+    ], function (visibilityDebug) {
+        visibilityDebug({
+            productId: <?= (int) $block->getProductId() ?>,
+            storeId: <?= (int) $block->getStoreId() ?>,
+            debugUrl: '<?= $escaper->escapeJs($block->getDebugUrl()) ?>',
+            formKey: '<?= $escaper->escapeJs($block->getFormKey()) ?>'
+        });
+    });
+</script>

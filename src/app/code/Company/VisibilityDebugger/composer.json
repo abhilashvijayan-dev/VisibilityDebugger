@@ -1,0 +1,27 @@
+{
+    "name": "company/module-visibility-debugger",
+    "description": "Smart Product Visibility Debugger: explains why a product is not visible on storefront for a selected store view.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Company"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "magento/framework": "*",
+        "magento/module-catalog": "*",
+        "magento/module-store": "*",
+        "magento/module-indexer": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Company\\VisibilityDebugger\\": ""
+        }
+    }
+}

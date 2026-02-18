@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Company. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Company_VisibilityDebugger::visibility_debugger"
+             title="Visibility Debugger"
+             module="Company_VisibilityDebugger"
+             sortOrder="70"
+             parent="Magento_Catalog::catalog"
+             resource="Company_VisibilityDebugger::debug"
+             action="company_visibilitydebugger/config/index"/>
+    </menu>
+</config>

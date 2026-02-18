@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Company. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Company\VisibilityDebugger\Api\Data\VisibilityIssueInterface"
+                type="Company\VisibilityDebugger\Model\Data\VisibilityIssue"/>
+    <preference for="Company\VisibilityDebugger\Api\StoreResolverInterface"
+                type="Company\VisibilityDebugger\Model\Service\StoreResolver"/>
+
+    <type name="Company\VisibilityDebugger\Model\Service\VisibilityDiagnosticsService">
+        <arguments>
+            <argument name="checks" xsi:type="array">
+                <item name="product_status" xsi:type="object">Company\VisibilityDebugger\Model\Check\ProductStatusCheck</item>
+                <item name="visibility_attribute" xsi:type="object">Company\VisibilityDebugger\Model\Check\VisibilityAttributeCheck</item>
+                <item name="website_assignment" xsi:type="object">Company\VisibilityDebugger\Model\Check\WebsiteAssignmentCheck</item>
+                <item name="category_assignment" xsi:type="object">Company\VisibilityDebugger\Model\Check\CategoryAssignmentCheck</item>
+                <item name="stock_salable" xsi:type="object">Company\VisibilityDebugger\Model\Check\StockSalableCheck</item>
+                <item name="indexer_state" xsi:type="object">Company\VisibilityDebugger\Model\Check\IndexerStateCheck</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
