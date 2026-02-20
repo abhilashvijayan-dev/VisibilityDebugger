@@ -1,0 +1,190 @@
+<?php
+/**
+ * Copyright © Company. All rights reserved.
+ * @var \Company\GraphqlStudio\Block\Adminhtml\Studio\Index $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<div class="company-graphql-studio-root" id="company-graphql-studio-root" data-role="graphql-studio-root">
+    <div class="company-graphql-studio company-graphql-studio--loading">
+        <aside class="company-graphql-studio__left">
+            <div class="company-graphql-studio__sidebar-tabs" data-role="sidebar-tabs">
+                <div class="company-graphql-studio__tab-buttons">
+                    <button type="button" class="company-graphql-studio__tab is-active" data-tab-target="docs">
+                        <?= $escaper->escapeHtml(__('Docs')) ?>
+                    </button>
+                    <button type="button" class="company-graphql-studio__tab" data-tab-target="history">
+                        <?= $escaper->escapeHtml(__('History')) ?>
+                    </button>
+                </div>
+
+                <div class="company-graphql-studio__tab-panels">
+                    <div class="company-graphql-studio__tab-panel is-active" data-tab-panel="docs">
+                        <div class="company-graphql-studio__panel">
+                            <label class="company-graphql-studio__label" for="company-graphql-docs-endpoint">
+                                <?= $escaper->escapeHtml(__('Docs Endpoint')) ?>
+                            </label>
+                            <div class="company-graphql-studio__docs-endpoint-row">
+                                <input id="company-graphql-docs-endpoint"
+                                       type="text"
+                                       class="admin__control-text company-graphql-studio__docs-endpoint"
+                                       data-role="docs-endpoint-input"
+                                       value="<?= $escaper->escapeHtmlAttr($block->getSavedOrDefaultDocsEndpoint()) ?>" />
+                                <button type="button" class="action-secondary" data-role="docs-endpoint-save">
+                                    <?= $escaper->escapeHtml(__('Save')) ?>
+                                </button>
+                            </div>
+                            <div class="company-graphql-studio__docs-endpoint-note" data-role="docs-endpoint-note">
+                                <?= $escaper->escapeHtml(__('Defaulted to web URL GraphQL endpoint.')) ?>
+                            </div>
+                            <input type="text"
+                                   class="admin__control-text company-graphql-studio__docs-search"
+                                   data-role="docs-search"
+                                   placeholder="<?= $escaper->escapeHtmlAttr(__('Search operations...')) ?>" />
+                            <div class="company-graphql-studio__docs-list" data-role="docs-list"></div>
+                            <div class="company-graphql-studio__placeholder company-graphql-studio__placeholder--compact" data-role="docs-empty">
+                                <?= $escaper->escapeHtml(__('Docs are loading...')) ?>
+                            </div>
+
+                            <div class="company-graphql-studio__docs-code-header">
+                                <h4><?= $escaper->escapeHtml(__('From Code')) ?></h4>
+                                <button type="button" class="action-secondary" data-role="code-docs-refresh">
+                                    <?= $escaper->escapeHtml(__('Refresh')) ?>
+                                </button>
+                            </div>
+                            <div class="company-graphql-studio__code-docs-list" data-role="code-docs-list"></div>
+                            <div class="company-graphql-studio__placeholder company-graphql-studio__placeholder--compact" data-role="code-docs-empty">
+                                <?= $escaper->escapeHtml(__('Scanning module schema files...')) ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="company-graphql-studio__tab-panel" data-tab-panel="history">
+                        <div class="company-graphql-studio__panel">
+                            <div class="company-graphql-studio__history-list" data-role="history-list"></div>
+                            <div class="company-graphql-studio__placeholder company-graphql-studio__placeholder--compact" data-role="history-empty">
+                                <?= $escaper->escapeHtml(__('No history yet. Run a query to create your first entry.')) ?>
+                            </div>
+                            <button type="button" class="action-secondary company-graphql-studio__history-more" data-role="history-more" style="display:none;">
+                                <?= $escaper->escapeHtml(__('Load more')) ?>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="company-graphql-studio__center">
+            <div class="company-graphql-studio__toolbar">
+                <label class="company-graphql-studio__label company-graphql-studio__label--inline"
+                       for="company-graphql-endpoint">
+                    <?= $escaper->escapeHtml(__('Endpoint')) ?>
+                </label>
+                <input id="company-graphql-endpoint"
+                       type="text"
+                       class="admin__control-text company-graphql-studio__endpoint"
+                       data-role="endpoint-input"
+                       value="<?= $escaper->escapeHtmlAttr($block->getDefaultEndpoint()) ?>"
+                    <?= $block->isEndpointOverrideAllowed() ? '' : ' readonly="readonly"' ?> />
+                <button type="button" class="action-primary" data-role="run-query">
+                    <?= $escaper->escapeHtml(__('Run')) ?>
+                </button>
+            </div>
+            <div class="company-graphql-studio__messages" data-role="messages"></div>
+            <div class="company-graphql-studio__auth-banner" data-role="auth-required-banner" style="display:none;">
+                <?= $escaper->escapeHtml(__('Customer token required')) ?>
+            </div>
+            <div class="company-graphql-studio__token-helper">
+                <button type="button" class="action-secondary" data-role="token-helper-insert">
+                    <?= $escaper->escapeHtml(__('Insert generateCustomerToken helper')) ?>
+                </button>
+                <button type="button" class="action-secondary" data-role="token-helper-copy" style="display:none;">
+                    <?= $escaper->escapeHtml(__('Copy Token')) ?>
+                </button>
+                <button type="button" class="action-secondary" data-role="token-helper-use" style="display:none;">
+                    <?= $escaper->escapeHtml(__('Use Token')) ?>
+                </button>
+                <button type="button" class="action-secondary" data-role="token-helper-clear">
+                    <?= $escaper->escapeHtml(__('Clear Token')) ?>
+                </button>
+                <span class="company-graphql-studio__token-note" data-role="token-helper-note"></span>
+            </div>
+
+            <div class="company-graphql-studio__editor-wrap">
+                <label class="company-graphql-studio__label" for="company-graphql-query">
+                    <?= $escaper->escapeHtml(__('Query')) ?>
+                </label>
+                <textarea id="company-graphql-query"
+                          class="admin__control-textarea company-graphql-studio__textarea"
+                          data-role="query-editor"
+                          spellcheck="false">query ExampleProducts {
+  products(search: "bag", pageSize: 5) {
+    items {
+      sku
+      name
+    }
+  }
+}</textarea>
+            </div>
+
+            <div class="company-graphql-studio__tabs" data-role="request-tabs">
+                <div class="company-graphql-studio__tab-buttons">
+                    <button type="button"
+                            class="company-graphql-studio__tab is-active"
+                            data-tab-target="variables">
+                        <?= $escaper->escapeHtml(__('Variables')) ?>
+                    </button>
+                    <button type="button"
+                            class="company-graphql-studio__tab"
+                            data-tab-target="headers">
+                        <?= $escaper->escapeHtml(__('Headers')) ?>
+                    </button>
+                </div>
+                <div class="company-graphql-studio__tab-panels">
+                    <div class="company-graphql-studio__tab-panel is-active" data-tab-panel="variables">
+                        <textarea class="admin__control-textarea company-graphql-studio__textarea company-graphql-studio__textarea--small"
+                                  data-role="variables-editor"
+                                  spellcheck="false">{
+  "storeCode": "default"
+}</textarea>
+                    </div>
+                    <div class="company-graphql-studio__tab-panel" data-tab-panel="headers">
+                        <textarea class="admin__control-textarea company-graphql-studio__textarea company-graphql-studio__textarea--small"
+                                  data-role="headers-editor"
+                                  spellcheck="false">{
+  "Content-Type": "application/json"
+}</textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="company-graphql-studio__right">
+            <h3><?= $escaper->escapeHtml(__('Response')) ?></h3>
+            <pre class="company-graphql-studio__response" data-role="response-panel"><?= $escaper->escapeHtml(__('GraphQL Studio loading...')) ?></pre>
+        </section>
+    </div>
+</div>
+<script>
+    require([
+        'Company_GraphqlStudio/js/studio'
+    ], function (studio) {
+        studio({
+            rootSelector: '[data-role="graphql-studio-root"]',
+            executeUrl: '<?= $escaper->escapeJs($block->getExecuteUrl()) ?>',
+            defaultEndpoint: '<?= $escaper->escapeJs($block->getDefaultEndpoint()) ?>',
+            allowEndpointOverride: <?= $block->isEndpointOverrideAllowed() ? 'true' : 'false' ?>,
+            formKey: '<?= $escaper->escapeJs($block->getFormKey()) ?>',
+            storeCode: '<?= $escaper->escapeJs($block->getCurrentStoreCode()) ?>',
+            historyListUrl: '<?= $escaper->escapeJs($block->getHistoryListUrl()) ?>',
+            historyViewUrl: '<?= $escaper->escapeJs($block->getHistoryViewUrl()) ?>',
+            historyStarUrl: '<?= $escaper->escapeJs($block->getHistoryStarUrl()) ?>',
+            docsUrl: '<?= $escaper->escapeJs($block->getDocsUrl()) ?>',
+            docsDefaultEndpoint: '<?= $escaper->escapeJs($block->getWebDefaultEndpoint()) ?>',
+            docsSavedEndpoint: '<?= $escaper->escapeJs($block->getSavedDocsEndpoint()) ?>',
+            docsEndpointLoadUrl: '<?= $escaper->escapeJs($block->getGetDocsEndpointUrl()) ?>',
+            docsEndpointSaveUrl: '<?= $escaper->escapeJs($block->getSaveDocsEndpointUrl()) ?>',
+            codeDocsUrl: '<?= $escaper->escapeJs($block->getCodeDocsUrl()) ?>'
+        });
+    });
+</script>

@@ -1,0 +1,380 @@
+.company-graphql-studio {
+    display: grid;
+    grid-template-columns: 260px 1fr 35%;
+    gap: 16px;
+    min-height: 70vh;
+}
+
+.company-graphql-studio__left,
+.company-graphql-studio__center,
+.company-graphql-studio__right {
+    background: #fff;
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
+    padding: 12px;
+}
+
+.company-graphql-studio__left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.company-graphql-studio__sidebar-tabs .company-graphql-studio__tab-buttons {
+    margin-bottom: 10px;
+}
+
+.company-graphql-studio__panel h3,
+.company-graphql-studio__right h3 {
+    margin: 0 0 8px;
+    font-size: 1.4rem;
+}
+
+.company-graphql-studio__placeholder {
+    border: 1px dashed #c7c7c7;
+    background: #fafafa;
+    color: #666;
+    padding: 10px;
+    min-height: 80px;
+}
+
+.company-graphql-studio__placeholder--compact {
+    min-height: 0;
+}
+
+.company-graphql-studio__docs-search {
+    margin-bottom: 8px;
+}
+
+.company-graphql-studio__docs-endpoint-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.company-graphql-studio__docs-endpoint {
+    flex: 1;
+}
+
+.company-graphql-studio__docs-endpoint-note {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.company-graphql-studio__docs-endpoint-note.is-error {
+    color: #b84040;
+}
+
+.company-graphql-studio__docs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 48vh;
+    overflow: auto;
+}
+
+.company-graphql-studio__docs-code-header {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.company-graphql-studio__docs-code-header h4 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.company-graphql-studio__code-docs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+    max-height: 34vh;
+    overflow: auto;
+}
+
+.company-graphql-studio__code-docs-module-group {
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    padding: 6px;
+    background: #fcfcfc;
+}
+
+.company-graphql-studio__code-docs-module-title {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.company-graphql-studio__code-docs-item {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    background: #fff;
+    padding: 6px 8px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 18px 1fr auto;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.company-graphql-studio__code-docs-item:last-child {
+    margin-bottom: 0;
+}
+
+.company-graphql-studio__code-docs-name {
+    font-weight: 600;
+}
+
+.company-graphql-studio__code-docs-module {
+    color: #666;
+    font-size: 11px;
+}
+
+.company-graphql-studio__code-docs-desc {
+    grid-column: 2 / 4;
+    color: #555;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.company-graphql-studio__docs-item {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    background: #fff;
+    padding: 6px 8px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 18px 1fr auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.company-graphql-studio__docs-item:hover {
+    border-color: #1979c3;
+}
+
+.company-graphql-studio__docs-badge {
+    background: #1979c3;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 2px;
+    padding: 2px 0;
+}
+
+.company-graphql-studio__docs-name {
+    font-weight: 600;
+}
+
+.company-graphql-studio__docs-return {
+    color: #666;
+    font-size: 11px;
+}
+
+.company-graphql-studio__history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.company-graphql-studio__history-item {
+    border: 1px solid #d9d9d9;
+    border-left-width: 3px;
+    border-radius: 2px;
+    padding: 6px;
+    background: #fff;
+}
+
+.company-graphql-studio__history-item.is-success {
+    border-left-color: #2f8f2f;
+}
+
+.company-graphql-studio__history-item.is-error {
+    border-left-color: #b84040;
+}
+
+.company-graphql-studio__history-item-top {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.company-graphql-studio__history-open {
+    border: 0;
+    background: transparent;
+    color: #1979c3;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    font-weight: 600;
+    flex: 1;
+}
+
+.company-graphql-studio__history-star {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0;
+}
+
+.company-graphql-studio__history-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.company-graphql-studio__history-more {
+    margin-top: 8px;
+    width: 100%;
+}
+
+.company-graphql-studio__toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.company-graphql-studio__label {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.company-graphql-studio__label--inline {
+    margin-bottom: 0;
+}
+
+.company-graphql-studio__endpoint {
+    flex: 1;
+    min-width: 260px;
+}
+
+.company-graphql-studio__messages {
+    display: none;
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    border-radius: 2px;
+}
+
+.company-graphql-studio__messages.message-success {
+    background: #e8f7e8;
+    color: #006400;
+}
+
+.company-graphql-studio__messages.message-error {
+    background: #fde7e9;
+    color: #8a1f11;
+}
+
+.company-graphql-studio__messages.message-warning {
+    background: #fff7e2;
+    color: #7a5a00;
+}
+
+.company-graphql-studio__auth-banner {
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    border-radius: 2px;
+    background: #fff7e2;
+    color: #7a5a00;
+    border: 1px solid #f0d28c;
+    font-weight: 600;
+}
+
+.company-graphql-studio__token-helper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.company-graphql-studio__token-note {
+    font-size: 12px;
+    color: #666;
+}
+
+.company-graphql-studio__textarea {
+    width: 100%;
+    min-height: 280px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 12px;
+}
+
+.company-graphql-studio__textarea--small {
+    min-height: 140px;
+}
+
+.company-graphql-studio__tabs {
+    margin-top: 12px;
+}
+
+.company-graphql-studio__tab-buttons {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.company-graphql-studio__tab {
+    border: 1px solid #adadad;
+    background: #f5f5f5;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.company-graphql-studio__tab.is-active {
+    background: #1979c3;
+    border-color: #1979c3;
+    color: #fff;
+}
+
+.company-graphql-studio__tab-panel {
+    display: none;
+}
+
+.company-graphql-studio__tab-panel.is-active {
+    display: block;
+}
+
+.company-graphql-studio__response {
+    min-height: 100%;
+    max-height: 68vh;
+    overflow: auto;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid #e3e3e3;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.company-graphql-studio--loading [data-role="response-panel"] {
+    opacity: 0.8;
+}
+
+@media (max-width: 1440px) {
+    .company-graphql-studio {
+        grid-template-columns: 220px 1fr 40%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .company-graphql-studio {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Company. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Company_GraphqlStudio::developer_tools"
+             title="Developer Tools"
+             module="Company_GraphqlStudio"
+             sortOrder="95"
+             parent="Magento_Backend::system"
+             resource="Company_GraphqlStudio::studio"/>
+        <add id="Company_GraphqlStudio::studio"
+             title="GraphQL Studio"
+             module="Company_GraphqlStudio"
+             sortOrder="10"
+             parent="Company_GraphqlStudio::developer_tools"
+             resource="Company_GraphqlStudio::studio"
+             action="graphqlstudio/studio/index"/>
+    </menu>
+</config>

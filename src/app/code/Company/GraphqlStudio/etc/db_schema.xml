@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Company. All rights reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="company_graphqlstudio_history" resource="default" engine="innodb" comment="GraphQL Studio Query History">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="admin_user_id" padding="10" unsigned="true" nullable="false" comment="Admin User ID"/>
+        <column xsi:type="text" name="endpoint" nullable="false" comment="GraphQL Endpoint"/>
+        <column xsi:type="varchar" name="store_code" nullable="false" length="64" comment="Store Code"/>
+        <column xsi:type="varchar" name="operation_name" nullable="true" length="255" comment="GraphQL Operation Name"/>
+        <column xsi:type="longtext" name="query_text" nullable="false" comment="GraphQL Query"/>
+        <column xsi:type="longtext" name="variables_json" nullable="false" comment="Sanitized Variables JSON"/>
+        <column xsi:type="longtext" name="headers_json" nullable="false" comment="Sanitized Headers JSON"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="16" comment="Execution Status"/>
+        <column xsi:type="text" name="error_summary" nullable="true" comment="Error Summary"/>
+        <column xsi:type="int" name="duration_ms" padding="10" unsigned="true" nullable="false" default="0" comment="Execution Duration (ms)"/>
+        <column xsi:type="smallint" name="is_starred" padding="2" unsigned="true" nullable="false" default="0" comment="Starred Flag"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created At"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+
+        <index referenceId="COMPANY_GRAPHQLSTUDIO_HISTORY_ADMIN_USER_ID" indexType="btree">
+            <column name="admin_user_id"/>
+        </index>
+        <index referenceId="COMPANY_GRAPHQLSTUDIO_HISTORY_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
+        <index referenceId="COMPANY_GRAPHQLSTUDIO_HISTORY_IS_STARRED" indexType="btree">
+            <column name="is_starred"/>
+        </index>
+    </table>
+
+    <table name="company_graphqlstudio_audit" resource="default" engine="innodb" comment="GraphQL Studio Audit Log">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="admin_user_id" padding="10" unsigned="true" nullable="false" comment="Admin User ID"/>
+        <column xsi:type="text" name="endpoint" nullable="false" comment="GraphQL Endpoint"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="16" comment="Execution Status"/>
+        <column xsi:type="int" name="duration_ms" padding="10" unsigned="true" nullable="false" default="0" comment="Execution Duration (ms)"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created At"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMPANY_GRAPHQLSTUDIO_AUDIT_ADMIN_USER_ID" indexType="btree">
+            <column name="admin_user_id"/>
+        </index>
+        <index referenceId="COMPANY_GRAPHQLSTUDIO_AUDIT_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
+    </table>
+</schema>

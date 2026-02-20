@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Company. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <company_graphqlstudio>
+            <general>
+                <enabled/>
+            </general>
+            <security>
+                <allow_endpoint_override>0</allow_endpoint_override>
+                <allow_mutations>0</allow_mutations>
+                <introspection_enabled/>
+            </security>
+            <execution>
+                <timeout_seconds>15</timeout_seconds>
+                <max_response_kb>1024</max_response_kb>
+            </execution>
+            <history>
+                <retention_limit_per_user>200</retention_limit_per_user>
+                <retention_ttl_days>30</retention_ttl_days>
+                <allow_global>0</allow_global>
+            </history>
+            <docs>
+                <cache_ttl>300</cache_ttl>
+            </docs>
+        </company_graphqlstudio>
+    </default>
+</config>

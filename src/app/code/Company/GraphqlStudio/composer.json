@@ -1,0 +1,25 @@
+{
+    "name": "company/module-graphql-studio",
+    "description": "Admin GraphQL Studio for Adobe Commerce / Magento 2.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "require": {
+        "php": ">=8.2",
+        "magento/framework": "*",
+        "magento/module-backend": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Company\\GraphqlStudio\\": ""
+        },
+        "files": []
+    },
+    "config": {
+        "allow-plugins": {
+            "magento/*": true
+        }
+    }
+}
